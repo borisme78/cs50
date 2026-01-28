@@ -1,0 +1,23 @@
+# macOS
+.DS_Store
+.AppleDouble
+.LSOverride
+
+# VS Code
+.vscode/
+
+# Compiled objects and binaries
+*.o
+*.out
+*.a
+*.so
+*.dylib
+
+# Debug symbols (macOS)
+*.dSYM/
+
+# CS50 specific
+cs50.h
+
+# Misc
+*.log
