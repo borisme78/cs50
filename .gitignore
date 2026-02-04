@@ -13,6 +13,7 @@
 *.so
 *.dylib
 
+
 # Debug symbols (macOS)
 *.dSYM/
 
