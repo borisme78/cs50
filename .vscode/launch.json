@@ -6,7 +6,7 @@
       "type": "lldb",
       "request": "launch",
       "program": "${fileDirname}/${fileBasenameNoExtension}.o",
-      "args": [],
+      "args": ["iL6us"],
       "cwd": "${fileDirname}",
       "env": {
         "DYLD_LIBRARY_PATH": "/usr/local/lib"

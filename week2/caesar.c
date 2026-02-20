@@ -123,6 +123,11 @@ bool validate_imput(int argc, string argv[])
 int main(int argc, string argv[])
 {
 
+    if (argc != 2)
+    {
+        printf("Usage: ./caesar key\n");
+        return 1;
+    }
     bool is_valid = validate_imput(argc, argv);
     if (is_valid == true)
     {
