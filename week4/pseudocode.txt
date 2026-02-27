@@ -1,0 +1,101 @@
+ПОЧАТОК
+
+// 1. Оголосити глобальні структури
+КОНСТАНТА N ← кількість бакетів хеш-таблиці
+
+СТРУКТУРА node:
+    word
+    next
+
+МАСИВ hashtable розміру N
+ЗМІННА word_count ← 0
+
+
+// 2. Реалізувати hash(word)
+ФУНКЦІЯ hash(word):
+    перевести потрібні літери word у нижній регістр
+    обчислити числовий індекс від 0 до N-1
+    ПОВЕРНУТИ індекс
+
+
+// 3. Реалізувати load(dictionary)
+ФУНКЦІЯ load(dictionary):
+
+    для i від 0 до N-1:
+        hashtable[i] ← NULL
+
+    відкрити файл dictionary
+    якщо файл не відкрився:
+        ПОВЕРНУТИ false
+
+    ПОКИ можна зчитати слово з файлу:
+
+        створити new_node
+        якщо памʼять не виділилась:
+            закрити файл
+            ПОВЕРНУТИ false
+
+        скопіювати слово у new_node.word
+
+        index ← hash(word)
+
+        вставити вузол у початок списку:
+            new_node.next ← hashtable[index]
+            hashtable[index] ← new_node
+
+        word_count ← word_count + 1
+
+    закрити файл
+    ПОВЕРНУТИ true
+
+
+// 4. Реалізувати check(word)
+ФУНКЦІЯ check(word):
+
+    створити копію word у нижньому регістрі
+
+    index ← hash(word)
+
+    cursor ← hashtable[index]
+
+    ПОКИ cursor ≠ NULL:
+        якщо cursor.word дорівнює word:
+            ПОВЕРНУТИ true
+        cursor ← cursor.next
+
+    ПОВЕРНУТИ false
+
+
+// 5. Реалізувати size()
+ФУНКЦІЯ size():
+    ПОВЕРНУТИ word_count
+
+
+// 6. Реалізувати unload()
+ФУНКЦІЯ unload():
+
+    для i від 0 до N-1:
+
+        cursor ← hashtable[i]
+
+        ПОКИ cursor ≠ NULL:
+            temp ← cursor
+            cursor ← cursor.next
+            звільнити temp
+
+        hashtable[i] ← NULL
+
+    ПОВЕРНУТИ true
+
+
+// 7. Скомпілювати програму
+виконати make
+
+
+// 8. Запустити програму
+./speller texts/назва_файлу.txt
+
+
+// 9. Перевірити витоки памʼяті
+valgrind ./speller texts/малий_файл.txt
+
