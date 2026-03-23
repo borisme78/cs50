@@ -22,3 +22,5 @@ cs50.h
 
 # Misc
 *.log
+
+.venv

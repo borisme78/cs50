@@ -24,7 +24,7 @@ void mario(int rows, int columns)
 
 int main(void)
 {
-    int height = 0;
+    int height = 4;
     do
     {
         printf("Height: ");
