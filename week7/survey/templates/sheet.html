@@ -1,0 +1,41 @@
+{% extends "layout.html" %}
+
+{% block main %}
+
+<!-- http://getbootstrap.com/docs/4.1/content/typography/ -->
+<h1 class="mb-3">Sheet</h1>
+
+<!-- http://getbootstrap.com/docs/4.1/content/tables/ -->
+<form action="/sheet" method="post">
+    <table class="table table-striped">
+        <thead>
+            <tr>
+                <th scope="col">Name</th>
+                <th scope="col">House</th>
+                <th scope="col">Position</th>
+            </tr>
+        </thead>
+        <tbody>
+        <tbody>
+            {% for row in rows %}
+            <tr>
+                <td>{{ row["name"] }}</td>
+                <td>{{ row["house"] }}</td>
+                <td>{{ row["position"] }}</td>
+            </tr>
+            {% endfor %}
+        </tbody>
+
+        </tbody>
+    </table>
+
+
+</form>
+
+<script>
+
+    /* TODO */
+
+</script>
+
+{% endblock %}

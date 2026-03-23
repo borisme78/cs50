@@ -1,4 +1,3 @@
-import cs50
 import csv
 
 from flask import Flask, jsonify, redirect, render_template, request
@@ -24,6 +23,7 @@ def get_index():
     return redirect("/form")
 
 
+
 @app.route("/form", methods=["GET"])
 def get_form():
     return render_template("form.html")
@@ -31,9 +31,29 @@ def get_form():
 
 @app.route("/form", methods=["POST"])
 def post_form():
-    return render_template("error.html", message="TODO")
+    name = request.form.get("name")
+    house = request.form.get("house")
+    position = request.form.get("position")
+    # If either name or house is missing, render error page
+    if not name or not house or not position:
+        return render_template("error.html", message="Missing name, house, or position")
+
+    # 
+    with open("survey.csv", "a", newline="") as file:
+        writer = csv.writer(file)
+        writer.writerow([name, house, position])
+    return redirect("/sheet")
 
 
 @app.route("/sheet", methods=["GET"])
 def get_sheet():
-    return render_template("error.html", message="TODO")
+    rows = []
+    try:
+        with open("survey.csv", "r", encoding="utf-8") as file:
+            reader = csv.DictReader(file)
+            for row in reader:
+                rows.append(row)
+        
+    except:
+        rows = []
+    return render_template("sheet.html", rows=rows)

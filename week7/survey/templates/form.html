@@ -2,23 +2,61 @@
 
 {% block main %}
 
-    <!-- http://getbootstrap.com/docs/4.1/content/typography/ -->
-    <h1 class="mb-3">Form</h1>
+<!-- http://getbootstrap.com/docs/4.1/content/typography/ -->
+<h1 class="mb-3">Form</h1>
 
-    <!-- http://getbootstrap.com/docs/4.1/components/forms/ -->
-    <form action="/form" method="post">
+<!-- http://getbootstrap.com/docs/4.1/components/forms/ -->
+<form action="/form" method="post">
+    <div>
+        <input name="name" type="text" placeholder="Name" autocomplete="off">
+    </div>
+    <p></p>
+    <div>
+        <select name="house" class="form-select" aria-label="Default select example">
+            <option disabled selected>House</option>
+            <option value="Gryffindor">Gryffindor</option>
+            <option value="Hufflepuff">Hufflepuff</option>
+            <option value="Ravenclaw">Ravenclaw</option>
+            <option value="Slytherin">Slytherin</option>
+        </select>
+    </div>
+    <p></p>
+    <div>
+        <div class="form-check">
+            <input class="form-check-input" type="radio" name="position" id="position1" value="Beater">
+            <label class="form-check-label" for="position1">
+                Beater
+            </label>
+        </div>
+        <div class="form-check">
+            <input class="form-check-input" type="radio" name="position" id="position2" value="Chaser" checked>
+            <label class="form-check-label" for="position2">
+                Chaser
+            </label>
+        </div>
+                <div class="form-check">
+            <input class="form-check-input" type="radio" name="position" id="position3" value="Keeper">
+            <label class="form-check-label" for="position3">
+                Keeper
+            </label>
+        </div>
+                <div class="form-check">
+            <input class="form-check-input" type="radio" name="position" id="position4" value="Seeker" checked>
+            <label class="form-check-label" for="position4">
+                Seeker
+            </label>
+        </div>
+    </div>
+    <p></p>
+    <!-- http://getbootstrap.com/docs/4.1/components/buttons/ -->
+    <button class="btn btn-primary" type="submit">Submit</button>
 
-        <!-- TODO -->
+</form>
 
-        <!-- http://getbootstrap.com/docs/4.1/components/buttons/ -->
-        <button class="btn btn-primary" type="submit">Submit</button>
+<script>
 
-    </form>
+    /* TODO */
 
-    <script>
-
-        /* TODO */
-
-    </script>
+</script>
 
 {% endblock %}
