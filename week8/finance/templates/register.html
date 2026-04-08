@@ -1,0 +1,44 @@
+{% extends "layout.html" %}
+
+{% block title %}
+Register
+{% endblock %}
+
+{% block main %}
+<form action="/register" method="post">
+    <div class="form-group">
+        <input autocomplete="off" autofocus class="form-control" name="username" placeholder="Username" type="text">
+    </div>
+    <div class="form-group">
+        <input class="form-control" name="password" placeholder="Password" type="password">
+    </div>
+    <div class="form-group">
+        <input class="form-control" name="confirmation" placeholder="Password (again)" type="password">
+    </div>
+    <button class="btn btn-primary" type="submit">Register</button>
+</form>
+
+<script src="https://jquery.com"></script>
+<script>
+    let form = document.querySelector('#registration-form');
+    
+    form.onsubmit = function(event) {
+        // Зупиняємо відправку, щоб спочатку виконати перевірку
+        event.preventDefault();
+
+        let username = document.querySelector('#username').value;
+
+        // Використовуємо Ajax ($.get) для запиту до сервера
+        $.get('/check?username=' + username, function(isAvailable) {
+            if (isAvailable === true) {
+                // Якщо ім'я вільне — відправляємо форму програмно
+                form.submit();
+            } else {
+                // Якщо зайняте — виводимо попередження
+                alert("Це ім'я вже зайняте. Оберіть інше.");
+            }
+        });
+    };
+</script>
+
+{% endblock %}

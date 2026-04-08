@@ -1,0 +1,15 @@
+{% extends "layout.html" %}
+
+{% block title %}
+    Quoted
+{% endblock %}
+
+{% block main %}
+    <div>
+        <p>
+            The current price of <strong>{{ quote.name }}</strong> 
+            ({{ quote.symbol }}) is 
+            <strong>{{ quote.price | usd }}</strong>.
+        </p>
+    </div>
+{% endblock %}
